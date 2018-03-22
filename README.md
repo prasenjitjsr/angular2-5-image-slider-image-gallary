@@ -1,4 +1,4 @@
-# N5CompleteGuide
+# Angular 2/5 Image-slider or image-gallary
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
 
