@@ -59,7 +59,19 @@ export class AppComponent implements OnInit {
 ------------------
 use gallary css using Flex-layout (Css code in app.component.css)
 
+hammerJs
+-----
 I used hammerJs for swipe event which make slider mobile friendly as well.
+```
+npm i hammerjs --save
+```
+and add js file to .angular-cli.json file:
+
+```
+ "scripts": [
+        "../node_modules/hammerjs/hammer.min.js"
+      ],
+```
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
 
