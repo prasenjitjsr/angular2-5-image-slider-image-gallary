@@ -7,12 +7,13 @@ You can just add directive file in your project and use the below code in Templa
 
 .html file:
 --------------
+```
 <div class="row">
       <div class="gallary-wrap" gallarySlide="item" gallaryBoxID="items" 
       item-md=4 item-sm=2 item-xs=1>
           <div class="items" id="items">
             <div *ngFor="let image of gallaryimage" class="item">
-                <a href="https://scotch.io/tutorials/using-hammerjs-touch-gesture-in-angular-2" target="_blank">
+                <a href="https://www.onwebg.com/" target="_blank">
                 <img src="assets/images/{{image.image}}" alt="{{ image.title }}">
               </a>
             </div>
@@ -23,9 +24,11 @@ You can just add directive file in your project and use the below code in Templa
           </div>
       </div>
   </div>
+```
 
 .ts file
 --------
+```
 import { Component, OnInit } from '@angular/core';
 import { GallaryService } from  './gallary.service'
 
@@ -45,7 +48,7 @@ export class AppComponent implements OnInit {
     this.gallaryimage=this.gallaryservice.images;
   }
 }
-
+```
 .css file
 ------------------
 use gallary css using Flex-layout (Css code in app.component.css)
