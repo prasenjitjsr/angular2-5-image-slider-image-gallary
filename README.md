@@ -1,5 +1,56 @@
 # Angular 2/5 Image-slider or image-gallary
 
+Angular Image slider used Angular-CLI.
+I have created a gallary directive which accept some gallary configuration via attribute.
+
+You can just add directive file in your project and use the below code in Template file:
+
+.html file:
+--------------
+<div class="row">
+      <div class="gallary-wrap" gallarySlide="item" gallaryBoxID="items" 
+      item-md=4 item-sm=2 item-xs=1>
+          <div class="items" id="items">
+            <div *ngFor="let image of gallaryimage" class="item">
+                <a href="https://scotch.io/tutorials/using-hammerjs-touch-gesture-in-angular-2" target="_blank">
+                <img src="assets/images/{{image.image}}" alt="{{ image.title }}">
+              </a>
+            </div>
+          </div>
+          <div class="slider-controller">
+            <button class="prevbtn slideBtn">Prev</button>
+            <button class="nextbtn slideBtn">next</button>
+          </div>
+      </div>
+  </div>
+
+.ts file
+--------
+import { Component, OnInit } from '@angular/core';
+import { GallaryService } from  './gallary.service'
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent implements OnInit {
+  activeUsers:String[];
+  inactiveUsers:String[];
+  gallaryimage:object;
+  constructor(private gallaryservice:GallaryService){
+    
+  }
+  ngOnInit() {
+    this.gallaryimage=this.gallaryservice.images;
+  }
+}
+
+.css file
+------------------
+use gallary css using Flex-layout (Css code in app.component.css)
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
 
 ## Development server
