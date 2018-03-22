@@ -6,6 +6,7 @@ I have created a gallary directive which accept some gallary configuration via a
 You can just add directive file in your project and use the below code in Template file:
 
 Directive name: 'gallarySlide'
+
 BreakPoint: using 'item-md=4' 'item-sm=2' 'item-xs' attribute
 
 
