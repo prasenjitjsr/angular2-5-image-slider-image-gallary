@@ -29,7 +29,9 @@ export class GallaryDirective implements AfterViewInit{
         }
         if(clickBtn.indexOf('dotBox') !== -1){
             var parent=this._renderer.parentNode;
+            const element = this._renderer.selectRootElement('.dotBox.active'); 
             //this._renderer.removeClass(parent,'active');
+            this._renderer.removeClass(element,'active');
             this._renderer.addClass($event,'active');
             let slideto=$event.attributes.slideto.nodeValue;
             this.slideGallaryTo(slideto);
@@ -87,6 +89,9 @@ export class GallaryDirective implements AfterViewInit{
         for(let i=0; i<this.noOfSlideItem; i++){
             var childDot=this._renderer.createElement('div');
             this._renderer.addClass(childDot,"dotBox");
+            if(i==0){
+                this._renderer.addClass(childDot,"active");
+            }
             this._renderer.setAttribute(childDot,"slideto",""+i);
             this._renderer.appendChild(divElement,childDot);
         }
