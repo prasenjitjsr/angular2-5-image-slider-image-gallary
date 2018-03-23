@@ -10,12 +10,15 @@ export class GallaryDirective implements AfterViewInit{
     @Input('item-md') itemMd:number;
     @Input('item-sm') itemSm:number;
     @Input('item-xs') itemXs:number;
+    @Input('autoplay') autoplay:boolean;
+    @Input('speed') speed:number;
     
     slidePosition:number = 0;
     slideItemWidth:number;
     noOfSlideItem:number;
     itemInOneSlide:number;
     item:HTMLElement;
+    currentSlide:number=0;
 
     @HostListener('click', ['$event.target']) onClick($event){
         if($event.attributes.class.nodeValue){
@@ -34,7 +37,8 @@ export class GallaryDirective implements AfterViewInit{
             this._renderer.removeClass(element,'active');
             this._renderer.addClass($event,'active');
             let slideto=$event.attributes.slideto.nodeValue;
-            this.slideGallaryTo(slideto);
+            this.currentSlide=slideto;
+            this.slideGallaryTo(this.currentSlide);
         }
         
     }
@@ -49,7 +53,19 @@ export class GallaryDirective implements AfterViewInit{
 
     ngAfterViewInit(){
         if(!this.itemMd){this.itemMd=3;} if(!this.itemSm){this.itemSm=2;} if(!this.itemXs){this.itemXs=1;}
-        this.gallaryLength(this.el.nativeElement, this.gallarySlide)
+        if(!this.speed){this.speed=4000;} if(!this.autoplay){this.autoplay=false;}
+        this.gallaryLength(this.el.nativeElement, this.gallarySlide);
+        if(this.autoplay){
+            setInterval(()=>{
+                if(this.currentSlide < (this.noOfSlideItem-1)){
+                    this.currentSlide+=1;
+                }else{
+                    this.currentSlide=0;
+                }
+                console.log(this.currentSlide);
+                this.slideGallaryTo(this.currentSlide);
+            },this.speed);
+        }
     }
 
     @HostListener('window:resize') 
@@ -105,9 +121,7 @@ export class GallaryDirective implements AfterViewInit{
         'translate3d(' + (-this.slidePosition * this.slideItemWidth) + 'px,0,0)';
     }
     slideGallaryTo(item:number){
-        if(item){
             this.slidePosition=item;
-        }
         this.item.style.transform =
         'translate3d(' + (-this.slidePosition * this.slideItemWidth) + 'px,0,0)';
     }
