@@ -71,3 +71,6 @@
   border-radius: 50%;
   cursor: pointer;
 }
+.dots-control .dotBox.active {
+  background: #6b482f;
+}
