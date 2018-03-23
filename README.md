@@ -1,5 +1,7 @@
 # Angular 2/5 Image-slider or image-gallary
 
+![capture](https://user-images.githubusercontent.com/5255108/37812068-044b7c38-2e84-11e8-928c-a80e217d82cc.PNG)
+
 Angular Image slider used Angular-CLI.
 I have created a gallary directive which accept some gallary configuration via attribute.
 
